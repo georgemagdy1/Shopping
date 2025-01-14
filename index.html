@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Web Store</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <h1> Web Store</h1>
+        <div class="cart-icon" onclick="toggleCart()">
+            🛒 <span class="cart-count">0</span>
+        </div>
+    </nav>
+
+    <main>
+        <div class="category-nav">
+            <ul id="categoryList">
+             
+            </ul>
+        </div>
+
+        <div id="productsContainer">
+           
+        </div>
+    </main>
+
+    <div class="cart-modal">
+        <div class="close-cart" onclick="toggleCart()">✕</div>
+        <h2>Shopping Cart</h2>
+        <div class="cart-items"></div>
+        <div class="total">Total: $0.00</div>
+    </div>
+    <footer>
+       
+      
+            <p id="bb">&copy; 2025 Modern Web Store. All rights reserved.</p>
+            <h3 id="Des">Design by<span class="hj"> <a class="hj" href="https://www.linkedin.com/in/georgemagdy11">Eng:George Magdy</a> </span></h3>
+
+    </footer>
+    <script src="script.js"></script>
+ 
+</body>
+</html>
