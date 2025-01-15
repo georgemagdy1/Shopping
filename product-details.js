@@ -176,3 +176,36 @@ function submitOrder(event) {
     event.target.reset();
     toggleOrderForm();
 }
+function submitOrder(event) {
+    event.preventDefault();
+    
+    const formData = new FormData(event.target);
+    const orderData = Object.fromEntries(formData.entries());
+    const product = products.find(p => p.id === getProductIdFromUrl());
+    const total = product.price * orderData.quantity;
+
+    const newOrder = {
+        id: Date.now(),
+        customerName: orderData.name,
+        email: orderData.email,
+        phone: orderData.phone,
+        address: orderData.address,
+        items: [{
+            ...product,
+            quantity: parseInt(orderData.quantity)
+        }],
+        total: total,
+        status: 'pending',
+        date: new Date().toISOString()
+    };
+
+    // Save to localStorage
+    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+    orders.push(newOrder);
+    localStorage.setItem('orders', JSON.stringify(orders));
+
+    // Show success message
+    showSuccessMessage(orderData, product);
+    event.target.reset();
+    toggleOrderForm();
+}

@@ -3,26 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Web Store</title>
-<link rel="stylesheet" href="styles.css">
+    <title>Web Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth.css">
 </head>
 <body>
     <nav>
-        <h1> Web Store</h1>
-        <div class="cart-icon" onclick="toggleCart()">
-            🛒 <span class="cart-count">0</span>
+        <h1>Web Store</h1>
+        <div class="nav-right">
+            <div id="authLinks">
+                <!-- Auth links will be dynamically updated -->
+            </div>
+            <div class="cart-icon" onclick="toggleCart()">
+                🛒 <span class="cart-count">0</span>
+            </div>
         </div>
     </nav>
 
     <main>
         <div class="category-nav">
             <ul id="categoryList">
-             
             </ul>
         </div>
 
         <div id="productsContainer">
-           
         </div>
     </main>
 
@@ -32,14 +36,13 @@
         <div class="cart-items"></div>
         <div class="total">Total: $0.00</div>
     </div>
-    <footer>
-       
-      
-            <p id="bb">&copy; 2025 Modern Web Store. All rights reserved.</p>
-            <h3 id="Des">Design by<span class="hj"> <a class="hj" href="https://www.linkedin.com/in/georgemagdy11">Eng:George Magdy</a> </span></h3>
 
+    <footer>
+        <p id="bb">&copy; 2025 Modern Web Store. All rights reserved.</p>
+        <h3 id="Des">Design by<span class="hj"> <a class="hj" href="https://www.linkedin.com/in/georgemagdy11">Eng:George Magdy</a> </span></h3>
     </footer>
+
+    <script src="auth.js"></script>
     <script src="script.js"></script>
- 
 </body>
 </html>

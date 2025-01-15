@@ -188,3 +188,27 @@ window.addEventListener('DOMContentLoaded', () => {
     renderCategories();
     renderProducts();
 });
+function updateCart() {
+    const cartItems = document.querySelector('.cart-items');
+    const cartCount = document.querySelector('.cart-count');
+    const total = document.querySelector('.total');
+
+    cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+    cartItems.innerHTML = cart.map(item => `
+        <div class="cart-item">
+            <div class="cart-item-content">
+                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                <div class="cart-item-details">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-quantity">Quantity: ${item.quantity}</div>
+                    <div class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
+                </div>
+            </div>
+            <button onclick="removeFromCart(${item.id})">Remove</button>
+        </div>
+    `).join('');
+
+    const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    total.textContent = `Total: $${totalAmount.toFixed(2)}`;
+}
