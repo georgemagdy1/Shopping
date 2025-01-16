@@ -212,3 +212,36 @@ function updateCart() {
     const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     total.textContent = `Total: $${totalAmount.toFixed(2)}`;
 }
+// Add this to the beginning of script.js
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize loading screen
+    const loadingScreen = document.querySelector('.loading-screen');
+    
+    // Function to hide loading screen
+    const hideLoadingScreen = () => {
+      loadingScreen.classList.add('hidden');
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+      }, 500); // Match this with the CSS transition duration
+    };
+  
+    // Wait for all images to load
+    Promise.all(
+      Array.from(document.images)
+        .map(img => {
+          if (img.complete) return Promise.resolve();
+          return new Promise(resolve => {
+            img.onload = resolve;
+            img.onerror = resolve; // Handle error cases as well
+          });
+        })
+    )
+    .then(() => {
+      // Add a minimum delay to ensure smooth transition
+      setTimeout(hideLoadingScreen, 1000);
+    })
+    .catch(() => {
+      // Fallback in case of errors
+      setTimeout(hideLoadingScreen, 1000);
+    });
+  });
